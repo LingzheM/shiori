@@ -1,0 +1,14 @@
+{
+  "books": [
+    {
+      "id": "sample",
+      "title": "習慣の科学",
+      "author": "サンプル・ブック",
+      "chapters": [
+        { "id": "01", "title": "第一章　小さな一歩から", "file": "books/sample/01.txt" },
+        { "id": "02", "title": "第二章　環境の力", "file": "books/sample/02.txt" },
+        { "id": "03", "title": "第三章　記録と振り返り", "file": "books/sample/03.txt" }
+      ]
+    }
+  ]
+}
