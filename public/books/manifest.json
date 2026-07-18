@@ -1,13 +1,18 @@
 {
   "books": [
     {
-      "id": "sample",
-      "title": "習慣の科学",
-      "author": "サンプル・ブック",
+      "id": "tokyo-vice",
+      "title": "Tokyo Vice",
+      "author": "Jake Adelstein",
       "chapters": [
-        { "id": "01", "title": "第一章　小さな一歩から", "file": "books/sample/01.txt" },
-        { "id": "02", "title": "第二章　環境の力", "file": "books/sample/02.txt" },
-        { "id": "03", "title": "第三章　記録と振り返り", "file": "books/sample/03.txt" }
+        { "id": "01", "title": "第一章", "file": "books/tokyo-vice/chapter1.ja.txt" },
+        { "id": "02", "title": "第二章", "file": "books/tokyo-vice/chapter2.ja.txt" },
+        { "id": "03", "title": "第三章", "file": "books/tokyo-vice/chapate3.ja.txt" },
+        { "id": "04", "title": "第四章", "file": "books/tokyo-vice/chapter4.ja.txt" },
+        { "id": "05", "title": "第五章", "file": "books/tokyo-vice/chapter5.ja.txt" },
+        { "id": "06", "title": "第六章", "file": "books/tokyo-vice/chapter6.ja.txt" },
+        { "id": "07", "title": "第七章", "file": "books/tokyo-vice/chapter7.ja.txt" },
+        { "id": "08", "title": "第八章", "file": "books/tokyo-vice/chapter8.ja.txt" }
       ]
     }
   ]
