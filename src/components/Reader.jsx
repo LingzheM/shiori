@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { fetchChapter } from '../lib/content.js'
 import { load, save } from '../lib/storage.js'
 import { usePersistedState, FONT_SIZES, LEADINGS } from '../lib/hooks.js'
+import { prepare, release, requestAutoplayNext } from '../lib/audio.js'
+import { useAudio, NextChapterPrompt } from './AudioStrip.jsx'
 import ScrollView from './ScrollView.jsx'
 import PagedView from './PagedView.jsx'
 import Chrome from './Chrome.jsx'
@@ -34,6 +36,18 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
       .catch((e) => alive && setLoadError(e.message))
     return () => { alive = false }
   }, [chapter.file])
+
+  const hasAudio = Boolean(chapter.audio)
+  useEffect(() => {
+    if (!hasAudio) return
+    prepare({
+      src: import.meta.env.BASE_URL + chapter.audio,
+      key: `audio-pos:${book.id}:${chapterId}`,
+      title: chapter.title,
+      artist: book.title,
+    })
+    return () => release()
+  }, [hasAudio, chapter.audio, chapter.title, book.id, book.title, chapterId])
 
   const reportAnchor = useCallback(
     (p) => {
@@ -126,10 +140,21 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
         title={chapter.title}
         percent={percent}
         marked={marked}
+        hasAudio={hasAudio}
         onToc={() => setSheet('toc')}
         onMark={toggleMark}
         onSettings={() => setSheet('settings')}
       />
+
+      {hasAudio && (
+        <EndedPrompt
+          hasNext={index < chapters.length - 1}
+          onListenNext={() => {
+            requestAutoplayNext()
+            goChapter(chapters[index + 1].id)
+          }}
+        />
+      )}
 
       <Sheet open={sheet === 'toc'} onClose={() => setSheet(null)}>
         <TocPanel
@@ -148,5 +173,29 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
         <SettingsPanel settings={settings} setSettings={setSettings} />
       </Sheet>
     </>
+  )
+}
+
+/**
+ * 播完提示：自行订阅音频状态，Reader 本体不因 timeupdate 重渲染。
+ * 十秒无操作自动淡出；再次播放或翻章后状态复位。
+ */
+function EndedPrompt({ hasNext, onListenNext }) {
+  const audio = useAudio()
+  const [dismissed, setDismissed] = useState(false)
+  const ended = audio.status === 'ended'
+
+  useEffect(() => {
+    if (!ended) { setDismissed(false); return }
+    const t = setTimeout(() => setDismissed(true), 10000)
+    return () => clearTimeout(t)
+  }, [ended])
+
+  return (
+    <NextChapterPrompt
+      visible={ended && hasNext && !dismissed}
+      onListen={onListenNext}
+      onDismiss={() => setDismissed(true)}
+    />
   )
 }

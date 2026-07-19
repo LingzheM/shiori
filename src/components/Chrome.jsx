@@ -19,7 +19,9 @@ const icons = {
   ),
 }
 
-export default function Chrome({ visible, title, percent, marked, onToc, onMark, onSettings }) {
+import AudioStrip from './AudioStrip.jsx'
+
+export default function Chrome({ visible, title, percent, marked, hasAudio, onToc, onMark, onSettings }) {
   const cls = visible ? 'bar' : 'bar hidden'
   return (
     <>
@@ -28,6 +30,8 @@ export default function Chrome({ visible, title, percent, marked, onToc, onMark,
         <div className="percent">{percent}%</div>
       </header>
       <nav className={`${cls} bottom`}>
+        {hasAudio && <AudioStrip />}
+        <div className="bottom-nav">
         <button className="tool" onClick={onToc} aria-label="目次を開く">
           {icons.toc}
           <span>目次</span>
@@ -44,6 +48,7 @@ export default function Chrome({ visible, title, percent, marked, onToc, onMark,
           {icons.settings}
           <span>設定</span>
         </button>
+        </div>
       </nav>
     </>
   )
