@@ -12,7 +12,10 @@
         { "id": "05", "title": "第五章", "file": "books/tokyo-vice/chapter5.ja.txt" },
         { "id": "06", "title": "第六章", "file": "books/tokyo-vice/chapter6.ja.txt" },
         { "id": "07", "title": "第七章", "file": "books/tokyo-vice/chapter7.ja.txt", "audio": "books/tokyo-vice/chapter7.ja.mp3" },
-        { "id": "08", "title": "第八章", "file": "books/tokyo-vice/chapter8.ja.txt" }
+        { "id": "08", "title": "第八章", "file": "books/tokyo-vice/chapter8.ja.txt" },
+        { "id": "09", "title": "第九章", "file": "books/tokyo-vice/chapter9.ja.txt" },
+        { "id": "10", "title": "第十章", "file": "books/tokyo-vice/chapter10.ja.txt" },
+        { "id": "11", "title": "第十一章", "file": "books/tokyo-vice/chapter11.ja.txt" }
       ]
     },
     {
