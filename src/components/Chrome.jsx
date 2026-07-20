@@ -21,11 +21,16 @@ const icons = {
 
 import AudioStrip from './AudioStrip.jsx'
 
-export default function Chrome({ visible, title, percent, marked, hasAudio, onToc, onMark, onSettings }) {
+export default function Chrome({ visible, title, percent, marked, hasAudio, onBack, onToc, onMark, onSettings }) {
   const cls = visible ? 'bar' : 'bar hidden'
   return (
     <>
       <header className={`${cls} top`}>
+        {onBack && (
+          <button className="back-btn" onClick={onBack} aria-label="本棚へ戻る">
+            ‹
+          </button>
+        )}
         <div className="chapter-title">{title}</div>
         <div className="percent">{percent}%</div>
       </header>

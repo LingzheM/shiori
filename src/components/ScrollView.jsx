@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
+import { VocabText } from './Vocab.jsx'
 
 export default function ScrollView({
   paras,
@@ -6,6 +7,7 @@ export default function ScrollView({
   initialPara,
   markedSet,
   contentStyle,
+  onWordTap,
   onAnchor,
   onToggleChrome,
   hasPrev,
@@ -75,9 +77,10 @@ export default function ScrollView({
           <p
             key={i}
             ref={(el) => (paraEls.current[i] = el)}
+            data-idx={i}
             className={markedSet.has(i) ? 'para marked' : 'para'}
           >
-            {text}
+            <VocabText text={text} onWordTap={onWordTap} />
           </p>
         ))}
         <nav className="chapter-nav" onClick={(e) => e.stopPropagation()}>

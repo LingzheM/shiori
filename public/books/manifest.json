@@ -14,6 +14,28 @@
         { "id": "07", "title": "第七章", "file": "books/tokyo-vice/chapter7.ja.txt", "audio": "books/tokyo-vice/chapter7.ja.mp3" },
         { "id": "08", "title": "第八章", "file": "books/tokyo-vice/chapter8.ja.txt" }
       ]
+    },
+    {
+      "id": "1929",
+      "title": "1929",
+      "author": "Andrew Ross Sorkin",
+      "chapters": [
+        {
+          "id": "26",
+          "title": "第二十六章",
+          "file": "books/1929/chapter-26.ja.txt"
+        },
+        {
+          "id": "27",
+          "title": "第二十七章",
+          "file": "books/1929/chapter-27.ja.txt"
+        },
+        {
+          "id": "28",
+          "title": "第二十八章",
+          "file": "books/1929/chapter-28.ja.txt"
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { VocabText } from './Vocab.jsx'
 
 /**
  * 分页实现：CSS 多栏。
@@ -11,6 +12,7 @@ export default function PagedView({
   initialPara,
   markedSet,
   contentStyle,
+  onWordTap,
   onAnchor,
   onToggleChrome,
   onPageInfo,
@@ -130,9 +132,10 @@ export default function PagedView({
             <p
               key={i}
               ref={(el) => (paraEls.current[i] = el)}
+              data-idx={i}
               className={markedSet.has(i) ? 'para marked' : 'para'}
             >
-              {text}
+              <VocabText text={text} onWordTap={onWordTap} />
             </p>
           ))}
         </div>

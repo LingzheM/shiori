@@ -4,6 +4,8 @@ import { load, save } from '../lib/storage.js'
 import { usePersistedState, FONT_SIZES, LEADINGS } from '../lib/hooks.js'
 import { prepare, release, requestAutoplayNext } from '../lib/audio.js'
 import { useAudio, NextChapterPrompt } from './AudioStrip.jsx'
+import { SelectionBubble, WordCard } from './Vocab.jsx'
+import { addWord, sentenceAround } from '../lib/vocab.js'
 import ScrollView from './ScrollView.jsx'
 import PagedView from './PagedView.jsx'
 import Chrome from './Chrome.jsx'
@@ -11,7 +13,7 @@ import Sheet from './Sheet.jsx'
 import TocPanel from './TocPanel.jsx'
 import SettingsPanel from './SettingsPanel.jsx'
 
-export default function Reader({ book, chapterId, onChapterChange, settings, setSettings }) {
+export default function Reader({ book, chapterId, onChapterChange, onBack, settings, setSettings }) {
   const chapters = book.chapters
   const index = chapters.findIndex((c) => c.id === chapterId)
   const chapter = chapters[index]
@@ -26,6 +28,7 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
   const [sheet, setSheet] = useState(null) // 'toc' | 'settings' | null
   const [marks, setMarks] = usePersistedState(`bookmarks:${book.id}`, [])
   const [pageInfo, setPageInfo] = useState(null)
+  const [tappedWord, setTappedWord] = useState(null)
   // 视图重排计数：跳转/改字号时 remount 视图并回到锚点段落
   const [viewEpoch, setViewEpoch] = useState(0)
 
@@ -121,6 +124,7 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
     contentStyle,
     onAnchor: reportAnchor,
     onToggleChrome: () => setChrome((v) => !v),
+    onWordTap: setTappedWord,
     hasPrev: index > 0,
     hasNext: index < chapters.length - 1,
     onPrevChapter: () => index > 0 && goChapter(chapters[index - 1].id),
@@ -137,6 +141,7 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
 
       <Chrome
         visible={chrome}
+        onBack={onBack}
         title={chapter.title}
         percent={percent}
         marked={marked}
@@ -145,6 +150,20 @@ export default function Reader({ book, chapterId, onChapterChange, settings, set
         onMark={toggleMark}
         onSettings={() => setSheet('settings')}
       />
+
+      <SelectionBubble
+        onAdd={({ text, paraEl }) => {
+          const idx = Number(paraEl.dataset.idx ?? 0)
+          addWord({
+            word: text,
+            sentence: sentenceAround(paras[idx] || '', text),
+            bookId: book.id,
+            chapterId,
+            para: idx,
+          })
+        }}
+      />
+      <WordCard word={tappedWord} onClose={() => setTappedWord(null)} />
 
       {hasAudio && (
         <EndedPrompt

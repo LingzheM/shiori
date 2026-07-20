@@ -1,4 +1,5 @@
 import { FONT_SIZES, LEADINGS, LEADING_LABELS } from '../lib/hooks.js'
+import pkg from '../../package.json'
 
 /**
  * 设置即预览：面板遮罩刻意调浅（dim 0.12），
@@ -101,6 +102,7 @@ export default function SettingsPanel({ settings, setSettings }) {
           </button>
         </div>
       </div>
+      <div className="app-version">栞 v{pkg.version}</div>
     </div>
   )
 }

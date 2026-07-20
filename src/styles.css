@@ -622,3 +622,238 @@ button:focus-visible {
   .next-prompt.shown { transform: none; }
   .audio-play:active, .rate-chip:active, .next-prompt .next-go:active { transform: none; }
 }
+
+/* ==========================================================================
+   語彙（生词系统）
+   ========================================================================== */
+/* 生词标记：铅笔般的淡朱点线。静态——它每天被看几百次，绝不能动 */
+.vocab {
+  text-decoration: underline dotted;
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+
+/* 选区胶囊 */
+.sel-bubble {
+  position: fixed;
+  transform: translateX(-50%);
+  z-index: 35;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  animation: bubble-in 120ms var(--ease-out);
+  white-space: nowrap;
+}
+@keyframes bubble-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 词卡 */
+.word-card-root {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+}
+.word-card {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  max-width: 30rem;
+  margin: 0 auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 16px 18px 12px;
+  animation: card-up 200ms var(--ease-out);
+}
+@keyframes card-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.word-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.word-title {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+}
+.word-reading { font-size: 13px; color: var(--ink-2); }
+.word-meaning { margin: 0 0 8px; font-size: 14px; line-height: 1.7; }
+.word-meaning.pending { color: var(--ink-2); font-size: 12px; }
+.word-example {
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.word-actions {
+  display: flex;
+  gap: 4px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.word-actions button {
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: transform 100ms var(--ease-out);
+}
+.word-actions button:active { transform: scale(0.96); }
+.word-known { color: var(--accent); font-weight: 600; }
+.word-remove { color: var(--ink-2); margin-left: auto; }
+
+/* 語彙标签页 */
+.vocab-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px 6px;
+}
+.vocab-export {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  transition: transform 100ms var(--ease-out);
+}
+.vocab-export:active { transform: scale(0.96); }
+.vocab-backup {
+  margin-left: auto;
+  color: var(--ink-2);
+  font-size: 12px;
+  padding: 6px 8px;
+}
+.vocab-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px 10px 20px;
+}
+.vocab-item.learned { opacity: 0.55; }
+.vocab-body { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; }
+.vocab-word { font-family: var(--font-body); font-size: 15px; font-weight: 600; }
+.vocab-reading { font-size: 12px; color: var(--ink-2); }
+.vocab-pending { font-size: 11px; color: var(--ink-2); opacity: 0.7; }
+.vocab-act {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  border-radius: 8px;
+  transition: transform 100ms var(--ease-out);
+}
+.vocab-act:active { transform: scale(0.92); }
+.vocab-act.dim { color: var(--ink-2); }
+.vocab-divider {
+  padding: 12px 20px 4px;
+  font-size: 11px;
+  color: var(--ink-2);
+  letter-spacing: 0.06em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sel-bubble, .word-card { animation: none; }
+  .word-actions button:active, .vocab-export:active, .vocab-act:active { transform: none; }
+}
+
+/* ==========================================================================
+   本棚（多本书时的书架）
+   ========================================================================== */
+.shelf {
+  min-height: 100dvh;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: calc(28px + env(safe-area-inset-top)) 20px
+    calc(28px + env(safe-area-inset-bottom));
+}
+.shelf-head h1 {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-align: center;
+  margin: 0 0 6px;
+}
+.shelf-head::after {
+  content: '';
+  display: block;
+  width: 2.4em;
+  height: 1px;
+  margin: 0 auto 22px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+.shelf-list { display: flex; flex-direction: column; gap: 10px; }
+.shelf-book {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 14px 16px 0;
+  transition: transform 100ms var(--ease-out);
+}
+.shelf-book:active { transform: scale(0.985); }
+/* 书脊：签名元素的延续 */
+.shelf-book .spine {
+  width: 4px;
+  align-self: stretch;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+.shelf-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.shelf-title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.shelf-meta { font-size: 12px; color: var(--ink-2); }
+.shelf-progress { font-size: 12px; color: var(--accent); }
+.shelf-arrow { color: var(--ink-2); font-size: 18px; flex-shrink: 0; }
+
+/* 顶栏返回键 */
+.back-btn {
+  font-size: 22px;
+  line-height: 1;
+  padding: 0 10px 2px 2px;
+  margin-left: -4px;
+  color: var(--ink-2);
+  flex-shrink: 0;
+  transition: transform 100ms var(--ease-out);
+}
+.back-btn:active { transform: scale(0.9); }
+
+.app-version {
+  text-align: center;
+  font-size: 10px;
+  color: var(--ink-2);
+  opacity: 0.7;
+  padding: 12px 0 4px;
+  letter-spacing: 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-book:active, .back-btn:active { transform: none; }
+}
