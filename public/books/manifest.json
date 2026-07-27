@@ -19,8 +19,8 @@
         { "id": "12", "title": "第十二章", "file": "books/tokyo-vice/chapter12.ja.txt" },
         { "id": "13", "title": "第十三章", "file": "books/tokyo-vice/chapter13.ja.txt" },
         { "id": "14", "title": "第十四章", "file": "books/tokyo-vice/chapter14.ja.txt" },
-        { "id": "15", "title": "第十五章", "file": "books/tokyo-vice/chapter15.ja.txt" }
-
+        { "id": "15", "title": "第十五章", "file": "books/tokyo-vice/chapter15.ja.txt" },
+        { "id": "16", "title": "第十六章", "file": "books/tokyo-vice/chapter16.ja.txt" }
       ]
     },
     {
