@@ -26,24 +26,14 @@
       ]
     },
     {
-      "id": "1929",
-      "title": "1929",
-      "author": "Andrew Ross Sorkin",
+      "id": "hight output",
+      "title": "Hight Output Management",
+      "author": "Andrew S. Grove",
       "chapters": [
         {
-          "id": "26",
-          "title": "第二十六章",
-          "file": "books/1929/chapter-26.ja.txt"
-        },
-        {
-          "id": "27",
-          "title": "第二十七章",
-          "file": "books/1929/chapter-27.ja.txt"
-        },
-        {
-          "id": "28",
-          "title": "第二十八章",
-          "file": "books/1929/chapter-28.ja.txt"
+          "id": "1",
+          "title": "第一章",
+          "file": "books/High_Output_Management/chapter-1.ja.txt"
         }
       ]
     }
