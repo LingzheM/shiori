@@ -36,6 +36,14 @@
         {"id": "1", "title": "第一章", "file": "books/high-output/chapter1.ja.txt"},
         {"id": "2", "title": "第二章", "file": "books/high-output/chapter2.ja.txt"}
       ]
+    },
+    {
+      "id": "evicted",
+      "title": "Evicted",
+      "author": "",
+      "chapters": [
+        {"id": "1", "title": "第一章", "file": "books/evicted/chapter1.ja.txt"}
+      ]
     }
   ]
 }
