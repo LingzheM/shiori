@@ -29,12 +29,12 @@
       ]
     },
     {
-      "id": "hight output",
-      "title": "Hight Output Management",
+      "id": "the spy",
+      "title": "The Spy",
       "author": "Andrew S. Grove",
       "chapters": [
-        {"id": "1", "title": "第一章", "file": "books/high-output/chapter1.ja.txt"},
-        {"id": "2", "title": "第二章", "file": "books/high-output/chapter2.ja.txt"}
+        {"id": "1", "title": "第一章", "file": "books/TheSpy/chapter1.ja.txt"},
+        {"id": "2", "title": "第二章", "file": "books/TheSpy/chapter2.ja.txt"}
       ]
     },
     {
