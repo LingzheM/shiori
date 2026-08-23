@@ -55,7 +55,8 @@
         {"id": "1", "title": "第一章", "file": "books/Pachingo/chapter1.txt"},
         {"id": "2", "title": "第十三章", "file": "books/Pachingo/chapter-2-13.txt"},
         {"id": "3", "title": "第十四章", "file": "books/Pachingo/chapter-2-14.txt"},
-        {"id": "4", "title": "第十五章", "file": "books/Pachingo/chapter-2-15.txt"}
+        {"id": "4", "title": "第十五章", "file": "books/Pachingo/chapter-2-15.txt"},
+        {"id": "5", "title": "第十六章", "file": "books/Pachingo/chapter-2-16.txt"}
       ]
     }
   ]
