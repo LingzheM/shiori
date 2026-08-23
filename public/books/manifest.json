@@ -52,7 +52,8 @@
       "title": "Pachingo",
       "author": "Li",
       "chapters": [
-        {"id": "1", "title": "第一章", "file": "books/Pachingo/chapter1.txt"}
+        {"id": "1", "title": "第一章", "file": "books/Pachingo/chapter1.txt"},
+        {"id": "2", "title": "第十三章", "file": "books/Pachingo/chapter-2-13.txt"}
       ]
     }
   ]
