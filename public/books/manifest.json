@@ -64,7 +64,7 @@
       "title": "Empire",
       "author": "Li",
       "chapters": [
-        {"id": "1", "title": "开始", "file": " books/EmpireOfPain/04-Prologue-The-Taproot.ja.txt"},
+        {"id": "1", "title": "开始", "file": " books/EmpireOfPain/0.txt"},
         {"id": "2", "title": "第十三章", "file": "books/Pachingo/05-1-A-Good-Name.ja.txt"},
         {"id": "3", "title": "第十四章", "file": "books/Pachingo/chapter-2-14.txt"},
         {"id": "4", "title": "第十五章", "file": "books/Pachingo/chapter-2-15.txt"},
