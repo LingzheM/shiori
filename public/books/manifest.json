@@ -73,7 +73,7 @@
       "title": "Americana",
       "author": "B",
       "chapters": [
-        {"id": "2", "title": "第二章", "file": "books/Americana/ch2.txt"}
+        {"id": "2", "title": "第二章", "file": "books/Americana/ch02.txt"}
       ]
     }
   ]
