@@ -75,9 +75,9 @@
       "chapters": [
         {"id": "2", "title": "第二章", "file": "books/Americana/ch02.txt"},
         {"id": "3", "title": "第三章", "file": "books/Americana/ch03.txt"},
-        {"id": "3", "title": "第四章", "file": "books/Americana/4-COTTON.txt"},
-        {"id": "3", "title": "第五章", "file": "books/Americana/5-STEAM.txt"},
-        {"id": "3", "title": "第六章", "file": "books/Americana/6-CANALS.txt"}
+        {"id": "4", "title": "第四章", "file": "books/Americana/4-COTTON.txt"},
+        {"id": "5", "title": "第五章", "file": "books/Americana/5-STEAM.txt"},
+        {"id": "6", "title": "第六章", "file": "books/Americana/6-CANALS.txt"}
 
       ]
     }
