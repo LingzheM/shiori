@@ -78,7 +78,14 @@
         {"id": "4", "title": "第四章", "file": "books/Americana/4-COTTON.txt"},
         {"id": "5", "title": "第五章", "file": "books/Americana/5-STEAM.txt"},
         {"id": "6", "title": "第六章", "file": "books/Americana/6-CANALS.txt"}
-
+      ]
+    },
+    {
+      "id": "The Passage of Power",
+      "title": "The Passage of Power",
+      "author": "ALFRED",
+      "chapters": [
+        {"id": "1", "title": "第一章", "file": "books/ThePassage/04-1-The-Prediction.ja.txt"}
       ]
     }
   ]
